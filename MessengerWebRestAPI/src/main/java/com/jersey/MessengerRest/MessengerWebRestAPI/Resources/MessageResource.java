@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -20,5 +21,11 @@ public class MessageResource {
 	@Produces(MediaType.APPLICATION_XML)
 	public List<Messages> getMessages(){
 		return service.getAllMessages();
+	}
+	
+	@GET
+	@Path("/{messageID}")
+	public Messages getMessage(@PathParam(value="messageID") long mId){
+		return service.getMessage(mId);
 	}
 }
