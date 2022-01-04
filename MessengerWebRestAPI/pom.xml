@@ -3,14 +3,14 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.jersey.rest</groupId>
-    <artifactId>MessengerWebRest</artifactId>
+    <groupId>com.jersey.MessengerRest</groupId>
+    <artifactId>MessengerWebRestAPI</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>MessengerWebRest</name>
+    <name>MessengerWebRestAPI</name>
 
     <build>
-        <finalName>MessengerWebRest</finalName>
+        <finalName>MessengerWebRestAPI</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -30,7 +30,7 @@
             <dependency>
                 <groupId>org.glassfish.jersey</groupId>
                 <artifactId>jersey-bom</artifactId>
-                <version>${jersey.version}</version>
+                <version>2.26-b03</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -41,12 +41,14 @@
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet-core</artifactId>
+            <version>2.29.1</version>
             <!-- use the following artifactId if you don't need servlet 2.x compatibility -->
             <!-- artifactId>jersey-container-servlet</artifactId -->
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.inject</groupId>
             <artifactId>jersey-hk2</artifactId>
+            <version>2.29.1</version>
         </dependency>
         <!-- uncomment this to get JSON support
         <dependency>
