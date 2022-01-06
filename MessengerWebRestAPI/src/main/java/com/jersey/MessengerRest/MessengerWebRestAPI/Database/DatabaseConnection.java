@@ -10,13 +10,13 @@ public class DatabaseConnection {
 
 	private static Map<Long, Messages> messages = new HashMap<Long, Messages>();
 	
-	private static Map<Long, Profile> profile = new HashMap<Long, Profile>();
+	private static Map<String, Profile> profile = new HashMap<String, Profile>();
 	
 	public static Map<Long, Messages> getMessage() {
 		return messages;
 	}
 	
-	public static Map<Long, Profile> getProfile(){
+	public static Map<String, Profile> getProfile(){
 		return profile;
 	}
 }
