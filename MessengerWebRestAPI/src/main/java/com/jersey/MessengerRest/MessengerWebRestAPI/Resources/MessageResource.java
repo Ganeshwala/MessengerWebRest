@@ -10,6 +10,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import com.jersey.MessengerRest.MessengerWebRestAPI.Model.Messages;
@@ -24,9 +25,18 @@ public class MessageResource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
-	public List<Messages> getMessages(){
+	public List<Messages> getMessages(@QueryParam("year") int Year,@QueryParam("start") int Start,@QueryParam("size") int Size){
+		//System.out.println("year is getting :"Year);
+		if(Year > 0) {
+			return service.getAllMessagesForYear(Year);
+		}
+		if(Start >0 && Size >=0) {
+			return service.getAllMessagePaginated(Start, Size);
+		}
 		return service.getAllMessages();
 	}
+	
+	
 	
 	@GET
 	@Path("/{messageID}")

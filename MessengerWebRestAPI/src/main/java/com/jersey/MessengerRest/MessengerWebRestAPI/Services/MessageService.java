@@ -1,6 +1,7 @@
 package com.jersey.MessengerRest.MessengerWebRestAPI.Services;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -24,6 +25,26 @@ public class MessageService {
 		result.add(m2);
 		return result;*/
 		return new ArrayList<Messages>(msg.values());
+	}
+	
+	public List<Messages> getAllMessagesForYear(int year){
+		List<Messages> messagesForYear = new ArrayList<Messages>();
+		Calendar cal = Calendar.getInstance();
+		for(Messages message : msg.values()) {
+			cal.setTime(message.getCreated());
+			if(cal.get(Calendar.YEAR) == year) {
+				messagesForYear.add(message);
+			}
+		}
+		return messagesForYear;
+	}
+	
+	public List<Messages> getAllMessagePaginated(int start,int size){
+		ArrayList<Messages> list = new ArrayList<Messages>(msg.values());
+		if(start+size > list.size()) {
+			return new ArrayList<Messages>();
+		}
+		return (list.subList(start, start+size));
 	}
 	
 	public Messages getMessage(long id) {
